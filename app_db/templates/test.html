@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>기록보기</title>
+</head>
+<body>
+    <h1>기록보기</h1>
+
+    {% if records %}
+        {% for record in records %}
+            <div>
+                <div>
+                    <h2>날짜</h2>
+                    <p>{{ record.uploaded_at.strftime("%Y-%m-%d %H:%M:%S") }}</p>
+                </div>
+                <div>
+                    <h2>총 여드름 개수</h2>
+                    <p>{{ record.total_acne_count }}</p>
+                </div>
+                <div>
+                    <h2>여드름 많은 부위</h2>
+                    <p>{{ record.max_acne_part }}</p>
+                </div>
+                <div>
+                    <h2>원인</h2>
+                    <p>{{ record.cause_organ }}</p>
+                </div>
+                <hr> <!-- 구분선 추가 -->
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>저장된 기록이 없습니다.</p>
+    {% endif %}
+
+</body>
+</html>
