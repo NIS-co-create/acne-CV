@@ -14,6 +14,8 @@ body {
     overflow: hidden;
     position: relative;
     border: 1px solid #ddd;
+    justify-content: space-between;
+    align-items: center;
   }
 
   /* 상단 상태바 */
@@ -134,10 +136,28 @@ body {
     cursor: pointer;
   }
 
-  .menu {
-    width:393px;
-    height:56px;
-    background: url('https://raw.githubusercontent.com/NIS-co-create/acne-CV/refs/heads/main/app_image/menu.png');
-    background-size: cover;
-    margin-top: 22px;
+  .button-large {
+    width: 300px;
+    height: 50px;
   }
+
+  .large-button-container {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+    margin-top: 60px;
+    margin-bottom: 80px;
+    gap: 30px;
+}
+
+.menu {
+  width:393px;
+  height:56px;
+  background: url('https://raw.githubusercontent.com/NIS-co-create/acne-CV/refs/heads/main/app_image/menu.png');
+  background-size: cover;
+  margin-top: 22px;
+  position: absolute; 
+  bottom: 0;
+}
+
