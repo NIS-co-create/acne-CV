@@ -200,3 +200,57 @@ body {
   bottom: 0;
 }
 
+
+.intro-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+}
+
+/* 로고 컨테이너 (중앙 정렬) */
+.logo-container {
+  width: 128px;
+  height: 128px;
+  background: white;
+  border-radius: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px; /* 로고 아래 여백 */
+}
+
+/* 로고 이미지 */
+.logo {
+  width: 126px;
+  height: 126px;
+  background: url('https://raw.githubusercontent.com/NIS-co-create/acne-CV/7edf8624a2d047608bf756519e2ddbd55c7f2b5c/app_image/%EB%A1%9C%EA%B3%A0.svg') no-repeat center;
+  background-size: contain;
+}
+
+.description {
+  font-size: 15px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  color: black;
+  text-align: center;
+  line-height: 1.5;
+  max-width: 349px;
+}
+
+.start-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* 설명과 버튼 사이 여백 */
+}
+.start-button {
+  width: 27px; /* 버튼 크기 */
+  height: 27px;
+  background: url('https://raw.githubusercontent.com/NIS-co-create/acne-CV/388be4c46e7a592f2de78d9f17de5ed751610068/app_image/click.svg') no-repeat center;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+}
+
