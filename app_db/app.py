@@ -124,14 +124,14 @@ def save_result():
 
     return jsonify({"message": "분석 결과가 성공적으로 저장되었습니다!"})
 
-# 📌 ✅ 기록보기 페이지 추가 (🔥 📍 이 부분에 추가!)
-@app.route("/history")
+# 📌 ✅ 기록보기 페이지 (record.html)
+@app.route("/record")
 def history():
     session = SessionLocal()
     records = session.query(AcneAnalysis).all()
     session.close()
 
-    return render_template("test.html", records=records)  # ✅ 데이터를 HTML로 전달
+    return render_template("record.html", records=records)  # ✅ 데이터를 HTML로 전달
 
 # Flask 서버 실행
 if __name__ == "__main__":
