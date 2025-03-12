@@ -17,6 +17,11 @@
       <!-- 프로필 이미지 -->
       <img class="face-image" src="https://raw.githubusercontent.com/NIS-co-create/acne-CV/main/app_image/test.jpg" alt="face Image">
 
+
+      <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data" style="display: none;">
+        <input type="file" name="file" id="fileInput" accept="image/*" required>
+      </form>
+      
       <div class="large-button-container">
         <div class="button button-large">사진 등록</div>
         <div class="button button-large">사진 등록</div>
@@ -29,6 +34,17 @@
 
 
     </div>
+
+    <script>
+      document.getElementById("uploadBtn").addEventListener("click", function() {
+          document.getElementById("fileInput").click(); // 파일 선택 창 열기
+      });
+
+      document.getElementById("fileInput").addEventListener("change", function() {
+          document.getElementById("uploadForm").submit(); // 파일 선택 후 자동 제출
+      });
+    </script>
+    
   </body>
 
 </html>
