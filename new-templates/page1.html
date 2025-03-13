@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=393, initial-scale=1.0">
+    <title>피그널</title>
+    <style>
+    body {
+        margin: 0;
+        background: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+        width: 393px;
+        height: 852px;
+        background: linear-gradient(to bottom, #FF3F7C, #FF0C59, #D80044, #A50034, #720024, #3F0014, #0C0004);
+        position: relative;
+        border: 1px solid #ddd;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .inner-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transform: translateY(-50px); 
+    }
+
+    .logo {
+        width: 80px;
+        height: 100px;
+        background: url('https://raw.githubusercontent.com/NIS-co-create/acne-CV/f5b099fcba07259a47704a761398afda52ddd268/app_image/%EB%A1%9C%EA%B3%A01.svg') no-repeat center;
+        background-size: contain;
+        margin-bottom: 45px;
+    }
+    .text {
+        color: white;
+        font-size: 30px;
+        font-family: "Noto Sans KR";
+        font-weight: 300;
+        word-wrap: break-word;
+    }
+    .highlight {
+        color: white;
+        font-size: 30px;
+        font-family: "Noto Sans KR";
+        font-weight: 900;
+        word-wrap: break-word;
+    }
+    .signal {
+        width: 100%;
+        height: 60px;
+        background: url("https://raw.githubusercontent.com/NIS-co-create/acne-CV/00bd83175033a9665f08e01d5d90f4ca64306494/app_image/signal.svg");
+        background-size: contain;
+        margin-top: -20px; /* 위로 올려서 빈 공간 줄이기 */
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="inner-container">
+            <div class="logo"></div>
+            <div class="text">피부가 보내는 <span class="highlight">신호</span></div>
+            <div class="text highlight">피그널</div>
+        </div>
+        <div class="signal"></div>
+    </div>
+</body>
+</html>
