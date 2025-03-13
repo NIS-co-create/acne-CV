@@ -1,5 +1,5 @@
 # Flask 및 SQLAlchemy import
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect, url_for
 from werkzeug.utils import secure_filename
 from sqlalchemy import create_engine, Column, Integer, String, DateTime
 from sqlalchemy.orm import declarative_base, sessionmaker
@@ -34,7 +34,6 @@ class AcneAnalysis(Base):
 # 데이터베이스 변경 적용
 Base.metadata.create_all(engine)  # 새 테이블 생성
 
-
 # ✅ 원인이 되는 장기 매핑 (여드름 부위별 원인 장기)
 ACNE_CAUSE_MAPPING = {
     "이마": "스트레스",
@@ -44,7 +43,7 @@ ACNE_CAUSE_MAPPING = {
     "턱": "신장"
 }
 
-# 분석 결과 저장 함수 (수정됨)
+# ✅ 분석 결과 저장 함수
 def add_acne_analysis(total_acne_count, max_acne_part):
     session = SessionLocal()
 
@@ -66,10 +65,7 @@ def add_acne_analysis(total_acne_count, max_acne_part):
 
     print(f"✅ 분석 결과 저장 완료: {uploaded_at}, {max_acne_part} 부위에 뾰루지 (원인: {cause_organ})")
 
-# ✅ 데이터베이스 생성
-Base.metadata.create_all(engine)
-
-# 📌 메인 페이지 (파일 업로드)
+# Flask에서 분석 결과에 따라 적절한 HTML 반환
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
@@ -95,21 +91,29 @@ def index():
             max_acne_part = results["max_acne_part"]
             acne_count_by_part = results["acne_count_by_part"]
 
-            # 결과 페이지로 이동
-            return render_template("result.html",
-                                   results={
-                                       "total_acne_count": total_acne_count,
-                                       "max_acne_part": max_acne_part,
-                                       "acne_count_by_part": acne_count_by_part,
-                                       "image_path": file_path
-                                   },
-                                   filename=filename)
+            # ✅ 결과 페이지 선택 (여드름 부위에 따라 HTML 변경)
+            RESULT_PAGES = {
+                "이마": "forehead.html",
+                "코": "nose.html",
+                "왼쪽볼": "leftcheek.html",
+                "오른쪽볼": "rightcheek.html",
+                "턱": "jaw.html"
+            }
+            template_file = RESULT_PAGES.get(max_acne_part, "result.html")
+
+            return render_template(template_file, results={
+                "total_acne_count": total_acne_count,
+                "max_acne_part": max_acne_part,
+                "acne_count_by_part": acne_count_by_part,
+                "image_path": file_path
+            })
         except Exception as e:
             return f"모델 실행 중 오류 발생: {e}", 500
 
     return render_template("index.html")
 
-# 📌 ✅ 분석 결과 저장 API (AJAX 요청 처리) → **여기에 추가!**
+
+# 📌 ✅ 분석 결과 저장 API (AJAX 요청 처리)
 @app.route("/save_result", methods=["POST"])
 def save_result():
     data = request.json
@@ -119,7 +123,7 @@ def save_result():
     if total_acne_count is None or max_acne_part is None:
         return jsonify({"error": "저장할 데이터가 부족합니다."}), 400
 
-    # ✅ 분석 결과 저장 (원인 장기 포함)
+    # ✅ 분석 결과 저장
     add_acne_analysis(total_acne_count, max_acne_part)
 
     return jsonify({"message": "분석 결과가 성공적으로 저장되었습니다!"})
