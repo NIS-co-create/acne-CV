@@ -2,34 +2,26 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=393, initial-scale=1.0">
   <title>코</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
     <div class="container">
+      <div class="status-bar"></div>
 
-      <!-- 상태바 -->
-      <div class="status-bar">
-      </div>
+      <button class="back-button" onclick="history.back();">
+        <img src="{{ url_for('static', filename='images/back.svg') }}" alt="뒤로가기">
+      </button>
 
-      <button class="back-button">
-        <svg width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M34.0417 19.7083H16.125L22.0196 13.8138C22.1875 13.6472 22.3208 13.449 22.4118 13.2307C22.5027 13.0124 22.5496 12.7782 22.5496 12.5417C22.5496 12.3051 22.5027 12.071 22.4118 11.8526C22.3208 11.6343 22.1875 11.4361 22.0196 11.2696C21.6839 10.9359 21.2298 10.7486 20.7565 10.7486C20.2831 10.7486 19.829 10.9359 19.4933 11.2696L11.8071 18.9738C11.1342 19.6427 10.754 20.5512 10.75 21.5C10.7587 22.4426 11.1385 23.3438 11.8071 24.0083L19.4933 31.7125C19.6604 31.8784 19.8585 32.0097 20.0763 32.099C20.2941 32.1884 20.5274 32.2339 20.7628 32.2331C20.9982 32.2323 21.2312 32.1851 21.4483 32.0942C21.6655 32.0033 21.8627 31.8706 22.0285 31.7035C22.1944 31.5365 22.3258 31.3384 22.4151 31.1206C22.5044 30.9028 22.55 30.6695 22.5491 30.4341C22.5483 30.1987 22.5011 29.9657 22.4102 29.7485C22.3194 29.5314 22.1866 29.3342 22.0196 29.1683L16.125 23.2917H34.0417C34.5168 23.2917 34.9726 23.1029 35.3086 22.7669C35.6446 22.4309 35.8333 21.9752 35.8333 21.5C35.8333 21.0248 35.6446 20.5691 35.3086 20.2331C34.9726 19.8971 34.5168 19.7083 34.0417 19.7083Z" fill="black"/>
-        </svg>
-    </button>
-
-      <!-- 프로필 이미지 -->
       <img class="face-image" src="https://raw.githubusercontent.com/NIS-co-create/acne-CV/main/app_image/test.jpg" alt="face Image">
 
-      <!-- 카드 섹션 -->
       <div class="card">
         <div class="card-title">결과</div>
         <div class="card-content">
-        코에 뾰루지가 났어요 <br>
-        코의 뾰루지는 비장이 안 좋은 걸 뜻해요 <br>
-        비장에 좋은 식재료를 소개해 드릴게요
+          코에 뾰루지가 났어요.<br>
+          코의 뾰루지는 비장이 안 좋은 걸 뜻해요.<br>
+          비장에 좋은 식재료를 소개해 드릴게요.
         </div>
       </div>
 
@@ -38,36 +30,32 @@
         <div class="image-container">
           <img class="card-image" src="https://github.com/NIS-co-create/acne-CV/blob/main/app_image/%EC%8B%9C%EA%B8%88%EC%B9%98.png?raw=true" alt="food Image">
           <img class="card-image" src="https://github.com/NIS-co-create/acne-CV/blob/main/app_image/%EA%B0%95%ED%99%A9.png?raw=true" alt="food Image">
-         </div>
-        </div>
-
-      <div class="card">
-        <img class ="icon" src = https://raw.githubusercontent.com/NIS-co-create/acne-CV/ba374ae341a5d28de7265f632bea706476964e50/app_image/Info.svg alt="info">
-        <div class="card-content2">
-        고당류 섭취를 피하세요<br>
-        카페인 섭취를 줄여보세요
         </div>
       </div>
 
-      <!-- 버튼 -->
       <div class="button-container">
         <div class="button">다시찍기</div>
-        <div class="button" onclick="showAlert('저장되었습니다')">저장하기</div>
+        <div class="button" id="save-button">저장하기</div>
       </div>
 
-      <!-- 하단 메뉴 -->
-      <div class="menu">
-      </div>
-
+      <div class="menu"></div>
     </div>
 
-  </body>
-
-  <script>
-    function showAlert(message) {
-      alert(message);
-    }
-  </script>
-
-
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $(document).on("click", "#save-button", function() {
+        var results = { total_acne_count: "{{ results.total_acne_count }}", max_acne_part: "{{ results.max_acne_part }}" };
+        $.ajax({
+            type: "POST",
+            url: "/save_result",
+            contentType: "application/json",
+            data: JSON.stringify(results),
+            success: function(response) { alert("✅ 저장되었습니다!"); },
+            error: function(xhr, status, error) { alert("❌ 저장 실패: " + xhr.responseText); }
+        });
+    });
+});
+</script>
 </html>
