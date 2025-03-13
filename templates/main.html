@@ -1,54 +1,52 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=393, initial-scale=1.0">
-    <title>분석</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=393, initial-scale=1.0">
+  <title>분석</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
 
-  <body>
-    <div class="container">
+<body>
+  <div class="container">
 
-      <!-- 상태바 -->
-      <div class="status-bar">
-      </div>
-      <div style="height: 130px; width: 100%;"></div>
-      <!-- 프로필 이미지 -->
-      <img class="face-image" src="https://raw.githubusercontent.com/NIS-co-create/acne-CV/main/app_image/test.jpg" alt="face Image">
+    <!-- 상태바 -->
+    <div class="status-bar"></div>
+    <div style="height: 130px; width: 100%;"></div>
 
+    <!-- 프로필 이미지 -->
+    <img class="face-image" src="https://raw.githubusercontent.com/NIS-co-create/acne-CV/main/app_image/test.jpg" alt="face Image">
 
-      <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data" style="display: none;">
-        <input type="file" name="file" id="fileInput" accept="image/*" required>
-      </form>
-      
-      <div class="large-button-container">
-        <div class="button button-large" id="uploadBtn">사진 등록</div>
-        <div class="button button-large">분석 시작</div>
-        <div class="button button-large" id="recordBtn">기록 보기</div>
-      </div>
+    <!-- 파일 업로드 폼 -->
+    <form id="uploadForm" action="/" method="post" enctype="multipart/form-data">
+      <input type="file" name="file" id="fileInput" accept="image/*" required style="display: none;">
+      <button type="submit" id="submitBtn" style="display: none;">업로드</button>
+    </form>
 
-
-      <div class="menu">
-      </div>
-
-
+    <!-- 버튼 3개 -->
+    <div class="large-button-container">
+      <div class="button button-large" id="uploadBtn">사진 등록</div>
+      <div class="button button-large" id="analyzeBtn">분석 시작</div>
+      <div class="button button-large" id="recordBtn">기록 보기</div>
     </div>
 
-    <script>
-      document.getElementById("uploadBtn").addEventListener("click", function() {
-          document.getElementById("fileInput").click(); // 파일 선택 창 열기
-      });
+    <div class="menu"></div>
+  </div>
 
-      document.getElementById("fileInput").addEventListener("change", function() {
-          document.getElementById("uploadForm").submit(); // 파일 선택 후 자동 제출
-      });
+  <!-- JavaScript -->
+  <script>
+    document.getElementById("uploadBtn").addEventListener("click", function() {
+        document.getElementById("fileInput").click(); // 파일 선택 창 열기
+    });
 
-      document.getElementById("recordBtn").addEventListener("click", function() {
-          window.location.href = "/record"; // record.html로 이동
-      });
-    </script>
-    
-  </body>
+    document.getElementById("fileInput").addEventListener("change", function() {
+        document.getElementById("submitBtn").click(); // 파일 선택 후 자동 제출
+    });
 
+    document.getElementById("recordBtn").addEventListener("click", function() {
+        window.location.href = "/record"; // 기록 보기 페이지 이동
+    });
+  </script>
+
+</body>
 </html>
