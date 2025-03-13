@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 393px;
+    height: 852px;
+    background: white;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+
+.title {
+    margin-top: 99px;
+    font-size: 20px;
+    font-family: "Noto Sans KR";
+    font-weight: 700;
+    color: black;
+}
+.subtitle {
+    margin-top: 10px;
+    font-size: 25px;
+    font-family: "Noto Sans KR";
+    font-weight: 900;
+    color: black;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.highlight {
+    color: #FF3F7C;
+    font-family: "Noto Sans KR";
+}
+.face-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    background: #E0E0E0;
+    margin-top: 30px;
+}
+.description-box {
+    width: 350px;
+    height: 225px;
+    background: #F3F2F2;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: justify;
+    margin-top: 30px;
+}
+.description-text {
+    font-size: 15px;
+    font-family: "Noto Sans KR";
+    font-weight: 300;
+    color: black;
+    line-height: 1.8;
+}
+.detail-title {
+    font-size: 18px;
+    font-family: "Noto Sans KR";
+    font-weight: 500;
+    color: black;
+    margin-bottom: 25px;
+    margin-top: 5px;
+}
+.save-button {
+    width: 130px;
+    height: 40px;
+    background: white;
+    border-radius: 50px;
+    border: 1px solid #FF3F7C;
+    text-align: center;
+    line-height: 40px;
+    font-size: 15px;
+    font-family: "Noto Sans KR";
+    font-weight: 500;
+    color: #FF3F7C;
+    margin-top: auto;
+    margin-bottom: 20px;
+}
+.user-text {
+    margin-top: 5px;
+    font-size: 15px;
+    font-family: "Noto Sans KR";
+    font-weight: 700;
+    color: black;
+    text-align: center;
+}
+.nav-arrows {
+    display: flex;
+    justify-content: space-between;
+    width: 60px;
+    margin-top: 20px;
+    width: 220px;
+}
+.Polygon2 {
+    order: 2;
+}
+.Polygon3 {
+    order: 1;
+}
