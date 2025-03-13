@@ -110,3 +110,12 @@ body {
 .Polygon3 {
     order: 1;
 }
+.back-button {
+    position: absolute;
+    top: 25px;
+    background: white;
+    outline: none;
+    border: none;
+    cursor: pointer;
+  }
+
