@@ -1,16 +1,53 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>여드름 탐지</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=393, initial-scale=1.0">
+  <title>분석</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
-    <h1>🩹 여드름 탐지 모델</h1>
-    <form action="/" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/*" required>
-        <button type="submit">업로드 & 분석</button>
+  <div class="container">
+
+    <!-- 상태바 -->
+    <div class="status-bar"></div>
+    <div style="height: 130px; width: 100%;"></div>
+
+    <!-- 프로필 이미지 -->
+    <img class="face-image" src="https://raw.githubusercontent.com/NIS-co-create/acne-CV/main/app_image/test.jpg" alt="face Image">
+
+    <!-- 파일 업로드 폼 -->
+    <form id="uploadForm" action="/analyze" method="post" enctype="multipart/form-data">
+      <input type="file" name="file" id="fileInput" accept="image/*" required style="display: none;">
+      <button type="submit" id="submitBtn" style="display: none;">업로드</button>
     </form>
+
+    <!-- 버튼 3개 -->
+    <div class="large-button-container">
+      <div class="button button-large" id="uploadBtn">사진 등록</div>
+      <div class="button button-large" id="analyzeBtn">분석 시작</div>
+      <div class="button button-large" id="recordBtn">기록 보기</div>
+    </div>
+
+    <div class="menu"></div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    document.getElementById("uploadBtn").addEventListener("click", function() {
+        document.getElementById("fileInput").click(); // 파일 선택 창 열기
+    });
+
+    document.getElementById("fileInput").addEventListener("change", function() {
+        document.getElementById("submitBtn").click(); // 파일 선택 후 자동 제출
+    });
+
+    document.getElementById("recordBtn").addEventListener("click", function() {
+        window.location.href = "/record"; // 기록 보기 페이지 이동
+    });
+  </script>
+
 </body>
 </html>
+
