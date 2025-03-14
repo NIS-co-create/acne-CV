@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=393, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='detail.css') }}">
+    <title>상세정보</title>
+</head>
+<body>
+    <div class="container">
+        <div class="title">식재료 추천</div>
+        <div class="subtitle">신장에 좋은<span class="highlight">식재료</span>로 신장 건강을 관리해요</div>
+
+        <div class="box-contanier">
+            <div class="content-box">
+                <div class="title-container">
+                    <div class="recommendation-title">추천 식재료 1</div> 
+                    <div class="recipe-button"></div>
+                </div>
+                <div class="ingredient-container">
+                    <div class="image-wrapper">
+                        <div class="Rectangle35"></div> 
+                        <img class="ingredient-image" src="https://github.com/NIS-co-create/acne-CV/blob/main/app_image/%EC%88%99%EC%A3%BC%EB%82%98%EB%AC%BC.png?raw=true" alt="숙주나무"> <!-- 이미지 -->
+                    </div>
+                    <div class="ingredient-text">
+                        <div class="ingredient-name">숙주나물, 콩나물</div>
+                        <div class="ingredient-description">
+                            숙주나물과 콩나물은<br>
+                            <span class="highlight">칼륨</span>함량이 적고 이뇨작용을 도와<br>
+                            신장 기능에 도움이 돼요 
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <div class="content-box">
+                <div class="title-container">
+                    <div class="recommendation-title">추천 식재료 2</div>
+                    <div class="recipe-button"></div> 
+                </div>
+                <div class="ingredient-container">
+                    <div class="image-wrapper">
+                        <div class="Rectangle35"></div> <!-- 배경 -->
+                        <img class="ingredient-image" src="https://github.com/NIS-co-create/acne-CV/blob/main/app_image/%EB%8C%80%EC%B6%94.png?raw=true" alt="대추"> <!-- 이미지 -->
+                    </div>
+                    <div class="ingredient-text">
+                        <div class="ingredient-name">대추</div>
+                        <div class="ingredient-description">
+                            대추는 신장 기능을 강화해주고<br>부종을 완화해 줘요
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="warning-title">유의 사항</div>
+        <div class="warning-text">일상 생활 속 신장 건강을 위한 <span class="highlight">유의 사항</span>이에요</div>
+        <div class="box-contanier">
+            <div class="content-box">
+                <div class="warning-details">
+                    <span class="warning-highlight">나트륨</span>섭취를 줄여보세요<br>
+                    <span class="warning-highlight">칼륨 섭취에</span>유의하세요<br>
+                    <span class="warning-highlight">고단백질</span>위주의 식사를 멀리하세요<br>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-arrows">
+            <div class="Polygon3" id="goToResult">
+                <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.5 8.40193C-0.500003 9.55663 -0.5 12.4434 1.5 13.5981L15 21.3923C17 22.547 19.5 21.1036 19.5 18.7942V3.20577C19.5 0.896367 17 -0.547005 15 0.607695L1.5 8.40193Z" fill="#595F67"/>
+                </svg>
+            </div>
+            <div class="Polygon2">
+                <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.5 8.40193C20.5 9.55663 20.5 12.4434 18.5 13.5981L5 21.3923C3 22.547 0.5 21.1036 0.5 18.7942V3.20577C0.5 0.896367 3 -0.547005 5 0.607695L18.5 8.40193Z" fill="#D9D9D9"/>
+                </svg>
+            </div>
+        </div>
+
+        <button class="save-button" id="save-button">저장하기</button>
+    </div>
+        <script>
+        document.getElementById("goToResult").addEventListener("click", function() {
+            window.location.href = "/rightcheek";
+        });
+
+        document.getElementById("save-button").addEventListener("click", function() {
+            var results = {
+                total_acne_count: "{{ results.total_acne_count }}",
+                max_acne_part: "{{ results.max_acne_part }}"
+            };
+
+            fetch("/save_result", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(results)
+            })
+            .then(response => response.json())
+            .then(data => { alert("✅ 저장되었습니다!"); })
+            .catch(error => { alert("❌ 저장 실패!"); });
+        });
+    </script>
+</body>
+</html>  
