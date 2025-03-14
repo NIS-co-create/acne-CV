@@ -66,7 +66,7 @@
         </div>
 
         <div class="nav-arrows">
-            <div class="Polygon3">
+            <div class="Polygon3" id="goToResult">
                 <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1.5 8.40193C-0.500003 9.55663 -0.5 12.4434 1.5 13.5981L15 21.3923C17 22.547 19.5 21.1036 19.5 18.7942V3.20577C19.5 0.896367 17 -0.547005 15 0.607695L1.5 8.40193Z" fill="#595F67"/>
                 </svg>
@@ -81,6 +81,10 @@
         <button class="save-button" id="save-button">저장하기</button>
     </div>
         <script>
+        document.getElementById("goToResult").addEventListener("click", function() {
+            window.location.href = "/rightcheek";
+        });
+            
         document.getElementById("save-button").addEventListener("click", function() {
             var results = {
                 total_acne_count: "{{ results.total_acne_count }}",
