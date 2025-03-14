@@ -73,7 +73,24 @@
         </div>
 
 
-        <button class="save-button">저장하기</button>
+        <button class="save-button" id="save-button">저장하기</button>
     </div>
+        <script>
+        document.getElementById("save-button").addEventListener("click", function() {
+            var results = {
+                total_acne_count: "{{ results.total_acne_count }}",
+                max_acne_part: "{{ results.max_acne_part }}"
+            };
+
+            fetch("/save_result", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(results)
+            })
+            .then(response => response.json())
+            .then(data => { alert("✅ 저장되었습니다!"); })
+            .catch(error => { alert("❌ 저장 실패!"); });
+        });
+    </script>
 </body>
 </html>
