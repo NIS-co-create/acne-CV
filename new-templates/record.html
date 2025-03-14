@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=393, initial-scale=1.0">
+    <title>기록보기</title>
+    <!--<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">-->
+    <link rel="stylesheet" href="record.css">
+</head>
+<body>
+
+    <div class="container">
+
+
+        <button class="back-button" onclick="location.href='/home'">
+            <img src="{{ url_for('static', filename='images/back.svg') }}" alt="뒤로가기">
+        </button>
+
+
+        <img class="logo" src="https://raw.githubusercontent.com/NIS-co-create/acne-CV/f0933251f46e02a79c8806246513a60698e97a87/app_image/%EB%A1%9C%EA%B3%A0.svg" alt="logo">
+
+        <h1 class="title">피그널 님의 기록</h1>
+
+        <!-- 기록 리스트 -->
+        <div class="record-list">
+            {% if records %}
+                {% for record in records %}
+                    <div class="card">
+                        <div class="card-title">{{ record.uploaded_at.strftime("%Y-%m-%d %H:%M:%S") }}</div>
+                        <div class="card-content">뾰루지 위치 : {{ record.max_acne_part }} <br> 연관된 신체 부위 : {{ record.cause_organ }}</div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>저장된 기록이 없습니다.</p>
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+</html>
