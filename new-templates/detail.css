@@ -183,3 +183,20 @@
     .Polygon3 {
         order: 1;
     }
+
+
+    .title-container {
+        display: flex;
+        justify-content: space-between; /* 양쪽 정렬 */
+        align-items: center; /* 세로 중앙 정렬 */
+        width: 100%;
+    }
+    
+    .recipe-button {
+        background:url("https://raw.githubusercontent.com/NIS-co-create/acne-CV/6c814ea4d51f1533674c0561446146bb9a4e2a4b/app_image/%EB%A0%88%EC%8B%9C%ED%94%BC%EB%B3%B4%EA%B8%B0.svg");
+        color: white;
+        background-size: contain;
+        cursor: pointer;
+        width: 36px; 
+        height: 30px;
+    }
