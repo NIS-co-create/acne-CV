@@ -82,13 +82,15 @@ body {
     border-radius: 50px;
     border: 1px solid #FF3F7C;
     text-align: center;
-    line-height: 40px;
     font-size: 15px;
-    font-family: "Noto Sans KR";
+    font-family: "Noto Sans KR", sans-serif;
     font-weight: 500;
     color: #FF3F7C;
-    margin-top: auto;
-    margin-bottom: 20px;
+    margin: 40px auto 20px 108px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: normal; 
 }
 .user-text {
     margin-top: 5px;
