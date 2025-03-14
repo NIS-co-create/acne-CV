@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=393, initial-scale=1.0">
     <title>결과 화면</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='result.css') }}">
-    <!--<link rel="stylesheet" href="result.css">-->
+    <<link rel="stylesheet" href="{{ url_for('static', filename='result.css') }}">
 </head>
 <body>
     <div class="container">
@@ -21,9 +20,9 @@
             <div class="detail-title">상세설명</div>
             <div class="description-text">
                 <b>한의학</b>에서는 얼굴을 통해<br>
-                신체 장기 상태를 알 수 있어요.<br>
-                <b>{{ results.max_acne_part }}(우협)</b>은(는) <span class="highlight"><b>폐</b></span>가 안 좋은 걸 뜻해요.<br>
-                폐에 좋은 식재료와 유의 사항을 소개해 드릴게요.
+                신체 장기 상태를 알 수 있어요<br>
+                <b>{{ results.max_acne_part }}</b>은(는) <span class="highlight"><b>폐</b></span>가 안 좋은 걸 뜻해요<br>
+                폐에 좋은 식재료와 유의 사항을 소개해 드릴게요
             </div>
         </div>
 
