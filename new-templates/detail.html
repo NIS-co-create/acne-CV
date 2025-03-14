@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=393, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='detail.css') }}">
-    <!--<link rel="stylesheet" href="detail.css">-->
+    <!--<link rel="stylesheet" href="{{ url_for('static', filename='detail.css') }}">-->
+    <link rel="stylesheet" href="detail.css">
     <title>상세정보</title>
 </head>
 <body>
@@ -14,7 +14,10 @@
 
         <div class="box-contanier">
             <div class="content-box">
-                <div class="recommendation-title">추천 식재료 1</div>
+                <div class="title-container">
+                    <div class="recommendation-title">추천 식재료 1</div>
+                    <div class="recipe-button"></div>
+                </div>
                 <div class="ingredient-container">
                     <div class="image-wrapper">
                         <div class="Rectangle35"></div> <!-- 배경 -->
@@ -31,7 +34,10 @@
                 </div>
             </div>
             <div class="content-box">
-                <div class="recommendation-title">추천 식재료 2</div>
+                <div class="title-container">
+                    <div class="recommendation-title">추천 식재료 1</div>
+                    <div class="recipe-button"></div>
+                </div>
                 <div class="ingredient-container">
                     <div class="image-wrapper">
                         <div class="Rectangle35"></div> <!-- 배경 -->
@@ -71,7 +77,6 @@
                 </svg>
             </div>
         </div>
-
 
         <button class="save-button" id="save-button">저장하기</button>
     </div>
