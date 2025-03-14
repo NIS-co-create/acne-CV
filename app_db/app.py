@@ -3,12 +3,13 @@ from werkzeug.utils import secure_filename
 from sqlalchemy import create_engine, Column, Integer, String, DateTime
 from sqlalchemy.orm import declarative_base, sessionmaker
 from datetime import datetime
+import pytz  # ✅ 한국 시간 변환 추가
 import os
 from model.model import analyze_acne_by_parts_result  # YOLO 모델
 
 # Flask 앱 생성
 app = Flask(__name__)
-app.secret_key = "your_secret_key"  # ✅ session 사용을 위한 secret_key 추가
+app.secret_key = "your_secret_key"  # ✅ 세션 사용을 위한 secret_key 설정
 
 # 업로드 폴더 설정
 UPLOAD_FOLDER = "uploads"
@@ -21,12 +22,15 @@ engine = create_engine(DATABASE_URL, echo=True)
 Base = declarative_base()
 SessionLocal = sessionmaker(bind=engine)
 
+# ✅ 한국 시간대 설정
+KST = pytz.timezone('Asia/Seoul')
+
 # 데이터베이스 테이블 정의
 class AcneAnalysis(Base):
     __tablename__ = "acne_analysis"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    uploaded_at = Column(DateTime, default=datetime.utcnow)
+    uploaded_at = Column(DateTime, default=datetime.utcnow)  # ✅ UTC → KST 적용 예정
     total_acne_count = Column(Integer, nullable=False)
     max_acne_part = Column(String, nullable=False)
     cause_organ = Column(String, nullable=False)
@@ -43,7 +47,7 @@ def page1():
 def index():
     return render_template("index.html")
 
-# ✅ 3️⃣ 분석 결과 저장 함수
+# ✅ 3️⃣ 분석 결과 저장 함수 (한국 시간 적용)
 def add_acne_analysis(total_acne_count, max_acne_part):
     session_db = SessionLocal()
     ACNE_CAUSE_MAPPING = {
@@ -54,7 +58,9 @@ def add_acne_analysis(total_acne_count, max_acne_part):
         "턱": "신장"
     }
     cause_organ = ACNE_CAUSE_MAPPING.get(max_acne_part, "알 수 없음")
-    uploaded_at = datetime.utcnow()
+
+    # ✅ 한국 시간으로 저장
+    uploaded_at = datetime.now(KST)
 
     new_entry = AcneAnalysis(
         uploaded_at=uploaded_at,
@@ -125,13 +131,13 @@ def save_result():
     add_acne_analysis(total_acne_count, max_acne_part)
     return jsonify({"message": "분석 결과가 성공적으로 저장되었습니다!"})
 
-# ✅ 오른쪽 볼 결과 페이지 (rightcheek.html)
+# ✅ 6️⃣ 오른쪽 볼 결과 페이지 (rightcheek.html)
 @app.route("/rightcheek")
 def rightcheek():
-    results = session.get("last_results", {})  # 세션에서 데이터 가져오기
+    results = session.get("last_results", {})
     return render_template("rightcheek.html", results=results)
 
-# ✅ 6️⃣ 기록 보기 페이지
+# ✅ 7️⃣ 기록 보기 페이지
 @app.route("/record")
 def history():
     session_db = SessionLocal()
@@ -139,11 +145,16 @@ def history():
     session_db.close()
     return render_template("record.html", records=records)
 
-# ✅ 7️⃣ 상세 정보 페이지 추가 (Polygon2 클릭 시 이동)
+# ✅ 8️⃣ 상세 정보 페이지 추가 (Polygon2 클릭 시 이동)
 @app.route("/detail")
 def detail():
     results = session.get("last_results", {})
     return render_template("detail.html", results=results)
+
+# ✅ 9️⃣ 뒤로 가기 버튼이 항상 홈으로 이동하도록 설정
+@app.route("/back_to_home")
+def back_to_home():
+    return redirect(url_for("index"))
 
 # Flask 서버 실행
 if __name__ == "__main__":
