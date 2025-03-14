@@ -32,12 +32,12 @@ class AcneAnalysis(Base):
 
 Base.metadata.create_all(engine)  # 데이터베이스 테이블 생성
 
-# ✅ 1️⃣ 첫 화면 (page1.html) 렌더링
+# ✅ 1️⃣ 첫 화면 (page1.html) → 3초 후 index.html 자동 이동
 @app.route("/")
 def page1():
-    return render_template("page1.html")  # ✅ 1초 후 index.html로 이동
+    return render_template("page1.html")
 
-# ✅ 2️⃣ 1초 후 이동할 홈 화면 (index.html)
+# ✅ 2️⃣ 3초 후 이동할 홈 화면 (index.html)
 @app.route("/home")
 def index():
     return render_template("index.html")
@@ -66,7 +66,7 @@ def add_acne_analysis(total_acne_count, max_acne_part):
     session.close()
     print(f"✅ 분석 결과 저장 완료: {uploaded_at}, {max_acne_part} 부위 (원인: {cause_organ})")
 
-# ✅ 4️⃣ AI 분석 결과에 따라 페이지 이동
+# ✅ 4️⃣ AI 분석 후 결과 페이지 이동
 @app.route("/analyze", methods=["POST"])
 def analyze():
     if 'file' not in request.files:
@@ -89,7 +89,7 @@ def analyze():
         max_acne_part = results["max_acne_part"]
         acne_count_by_part = results["acne_count_by_part"]
 
-        # ✅ 분석 결과에 따라 HTML 페이지 이동
+        # ✅ 분석 결과에 따라 HTML 페이지 선택
         RESULT_PAGES = {
             "이마": "forehead.html",
             "코": "nose.html",
