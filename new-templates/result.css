@@ -113,7 +113,7 @@ body {
 }
 .back-button {
     position: absolute;
-    top: 25px;
+    top: 100px;
     left: 15px;
     background: white;
     outline: none;
