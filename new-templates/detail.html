@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=393, initial-scale=1.0">
-    <!--<link rel="stylesheet" href="{{ url_for('static', filename='detail.css') }}">-->
-    <link rel="stylesheet" href="detail.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='detail.css') }}">
     <title>상세정보</title>
 </head>
 <body>
@@ -84,7 +83,7 @@
         document.getElementById("goToResult").addEventListener("click", function() {
             window.location.href = "/rightcheek";
         });
-            
+
         document.getElementById("save-button").addEventListener("click", function() {
             var results = {
                 total_acne_count: "{{ results.total_acne_count }}",
