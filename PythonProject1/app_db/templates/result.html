@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=393, initial-scale=1.0">
+  <title>오류</title>
+  <style>
+    body {
+      margin: 0;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 393px;
+      height: 852px;
+      background: white;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid #ddd;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* 세로 중앙 정렬 */
+      align-items: center;
+    }
+
+    .info {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 20px;
+    }
+
+    .text {
+      color: black;
+      font-size: 24px;
+      font-family: "Noto Sans KR", sans-serif;
+      font-weight: 500;
+      text-align: center;
+      line-height: 1.5;
+      margin-bottom: 40px; /* 텍스트와 버튼 사이 간격 조절 */
+    }
+
+    .button {
+      width: 130px;
+      height: 40px;
+      border-radius: 50px;
+      border: 1px solid #FF3F7C;
+      background: white;
+      color: #FF3F7C;
+      font-size: 15px;
+      font-family: "Noto Sans KR", sans-serif;
+      font-weight: 500;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .button-large {
+      width: 300px;
+      height: 50px;
+      margin-top:100px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- 아이콘 -->
+    <img class="info" src="https://raw.githubusercontent.com/NIS-co-create/acne-CV/cb2c5a50d21f847388a14e81c356b1f926c6d12f/app_image/Info.svg">
+
+    <!-- 텍스트 -->
+    <div class="text">
+      인식이 안됐어요<br>
+      다시 시도해 주세요
+    </div>
+
+    <!-- 버튼 -->
+    <div class="button button-large" onclick="location.href='/home'">다시하기</div>
+
+  </div>
+</body>
+</html>

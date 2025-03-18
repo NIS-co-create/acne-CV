@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=393, initial-scale=1.0">
+  <title>분석</title>
+
+</head>
+<style>
+
+    body {
+    margin: 0;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .container {
+    width: 393px;
+    height: 852px;
+    background: white;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #ddd;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* 로고 이미지 */
+  .logo {
+    width: 128px;
+    height: 128px;
+    border-radius: 10px;
+    display: block;
+    margin: 211px auto 0px auto;
+  }
+
+  .button {
+    width: 130px;
+    height: 40px;
+    border-radius: 50px;
+    border: 1px solid #FF3F7C;
+    background: white;
+    color: #FF3F7C;
+    font-size: 15px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .button-large {
+    width: 300px;
+    height: 50px;
+  }
+
+  .large-button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+    margin-bottom: 80px;
+    gap: 15px;
+}
+
+</style>
+
+<body>
+  <div class="container">
+
+
+    <!-- 프로필 이미지 -->
+    <img class="logo" src="https://raw.githubusercontent.com/NIS-co-create/acne-CV/f0933251f46e02a79c8806246513a60698e97a87/app_image/%EB%A1%9C%EA%B3%A0.svg" alt="logo">
+
+    <!-- 파일 업로드 폼 -->
+    <form id="uploadForm" action="/analyze" method="post" enctype="multipart/form-data">
+      <input type="file" name="file" id="fileInput" accept="image/*" required style="display: none;">
+      <button type="submit" id="submitBtn" style="display: none;">업로드</button>
+    </form>
+
+    <!-- 버튼 3개 -->
+    <div class="large-button-container">
+      <div class="button button-large" id="uploadBtn">사진 분석하기</div>
+      <div class="button button-large" id="recordBtn">기록 보기</div>
+      <div class="button button-large">계정 설정</div>
+    </div>
+
+    <div class="menu"></div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    document.getElementById("uploadBtn").addEventListener("click", function() {
+        document.getElementById("fileInput").click(); // 파일 선택 창 열기
+    });
+
+    document.getElementById("fileInput").addEventListener("change", function() {
+        document.getElementById("submitBtn").click(); // 파일 선택 후 자동 제출
+    });
+
+    document.getElementById("recordBtn").addEventListener("click", function() {
+        window.location.href = "/record"; // 기록 보기 페이지 이동
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,202 @@
+body {
+    margin: 0;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .container {
+    width: 393px;
+    height: 852px;
+    background: white;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #ddd;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* 상단 상태바 */
+  .status-bar {
+    width: 393px;
+    height: 20px;
+    background: url('https://raw.githubusercontent.com/NIS-co-create/acne-CV/refs/heads/main/app_image/bar.png');
+    background-size: cover;
+  }
+
+  .top-bar {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    margin-bottom: 50px;
+  }
+  .title {
+    color: black;
+    font-size: 20px;
+    font-family: "Noto Sans KR";
+    font-weight: 700;
+    line-height: 20px;
+    word-wrap: break-word;
+    margin: 5px auto;
+  }
+
+  /* 얼굴 이미지 */
+  .face-image {
+    width: 190px;
+    height: 190px;
+    border-radius: 10px;
+    display: block;
+    margin: 26px auto 24px auto;
+  }
+
+  /* 카드 영역 */
+  .card {
+    width: 350px;
+    background: rgba(12, 0, 4, 0.05);
+    border-radius: 10px;
+    margin: auto 20px 20px 23px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    height: auto;
+    
+  }
+
+  .card-title {
+    font-size: 16px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
+    color: black;
+    margin-bottom: 10px;
+    text-align: left; 
+  }
+
+  .card-content {
+    text-align: left;
+    color: black;
+    font-size: 15px;
+    font-family: "Noto Sans KR";
+    font-weight: 300;
+    line-height: 1.5;
+    word-wrap: break-word;
+  }
+
+  /* 기록 리스트 */
+  .record-list {
+    width: 100%;
+    max-width: 393px;;
+    flex-grow: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 600px;
+    padding: 10px 0;
+
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE, Edge */
+    
+  }
+
+  .record-list::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera에서 스크롤바 숨기기 */
+}
+
+  .back-button {
+    position: absolute;
+    top: 25px;
+    background: white;
+    outline: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .card-content2 {
+    text-align: center;
+    color: black;
+    font-size: 15px;
+    font-family: "Noto Sans KR";
+    font-weight: 300;
+    line-height: 1.5;
+    word-wrap: break-word;
+  }
+  
+  .image-container{
+    display: flex;
+    width:100%;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto;
+    gap: 18px;
+    margin-top: 8px auto;
+  }
+
+  .card-image {
+    width: 70px; 
+    height: 70px; 
+    background: white; 
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.10);
+    border-radius: 10px; 
+    outline: 8px white solid"
+  }
+
+  .icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* 버튼 영역 */
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .button {
+    width: 130px;
+    height: 40px;
+    border-radius: 50px;
+    border: 1px solid #FF3F7C;
+    background: white;
+    color: #FF3F7C;
+    font-size: 15px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .button-large {
+    width: 300px;
+    height: 50px;
+  }
+
+  .large-button-container {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+    margin-top: 60px;
+    margin-bottom: 80px;
+    gap: 30px;
+}
+
+.menu {
+  width:393px;
+  height:56px;
+  background: url('https://raw.githubusercontent.com/NIS-co-create/acne-CV/refs/heads/main/app_image/menu.png');
+  background-size: cover;
+  margin-top: 22px;
+  position: absolute; 
+  bottom: 0;
+}
+
