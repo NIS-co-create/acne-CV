@@ -35,6 +35,7 @@ class AcneAnalysis(Base):
     max_acne_part = Column(String, nullable=False)
     cause_organ = Column(String, nullable=False)
 
+Base.metadata.drop_all(engine)  # 기존 테이블 삭제
 Base.metadata.create_all(engine)  # 데이터베이스 테이블 생성
 
 # ✅ 1️⃣ 첫 화면 (page1.html) → 3초 후 index.html 자동 이동
