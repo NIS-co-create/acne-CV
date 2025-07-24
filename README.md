@@ -53,8 +53,7 @@ AI 기반 피부 분석을 통해 뾰루지 위치 별 연관된 신체 기관�
 <br><hr>
 
 ### 💁🏻 시연 영상
-![시연 영상 링크](https://youtube.com/shorts/jJNZp1LQrow?si=rQtytGs-LjWFd9xW)
-<br><hr>
+![시연 영상 링크](https://youtube.com/shorts/jJNZp1LQrow?si=Qkw9lWKzMxg4adO7) 
 
 ### 📚 Reference
 https://www.notion.so/1a71b2a8468b80e4bb2bee2b307c8bf2
