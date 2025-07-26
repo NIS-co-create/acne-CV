@@ -52,8 +52,5 @@ AI 기반 피부 분석을 통해 뾰루지 위치 별 연관된 신체 기관�
 ![use case drawio](https://github.com/user-attachments/assets/51344dcb-382d-4508-bfa6-ee938872412f)
 <br><hr>
 
-### 💁🏻 시연 영상
-[▶️ Watch the demo on YouTube](https://youtube.com/shorts/jJNZp1LQrow?si=Zh8ks_hD9YjqH3VL) 
-
 ### 📚 Reference
 https://www.notion.so/1a71b2a8468b80e4bb2bee2b307c8bf2
